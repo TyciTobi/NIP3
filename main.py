@@ -11,12 +11,12 @@ class Parameters(BaseModel):
     bills_json_path: str = 'data/bills.json'
 
 class ApartmentSettlement(BaseModel):
-    apartment_key: str
+    apartment: str
     month: int
     year: int
-    total_bills: float        # Suma rachunków (media)
-    total_rent: float         # Suma czynszów od najemców
-    balance_due: float        # Kwota pozostała do uregulowania
+    total_bills: float  
+    total_rent: float       
+    balance_due: float        
 
 class Room(BaseModel):
     name: str
@@ -24,7 +24,7 @@ class Room(BaseModel):
 
 
 
-    
+
 class Apartment(BaseModel):
     key: str
     name: str
@@ -39,6 +39,7 @@ class Apartment(BaseModel):
             data = json.load(file)
         assert isinstance(data, dict), "Expected a dictionary of apartments"
         return {key: Apartment(**apartment) for key, apartment in data.items()}
+
 
     
 class Tenant(BaseModel):
