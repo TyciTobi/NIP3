@@ -10,12 +10,21 @@ class Parameters(BaseModel):
     transfers_json_path: str = 'data/transfers.json'
     bills_json_path: str = 'data/bills.json'
 
+class ApartmentSettlement(BaseModel):
+    apartment_key: str
+    month: int
+    year: int
+    total_bills: float        # Suma rachunków (media)
+    total_rent: float         # Suma czynszów od najemców
+    balance_due: float        # Kwota pozostała do uregulowania
 
 class Room(BaseModel):
     name: str
     area_m2: float
 
 
+
+    
 class Apartment(BaseModel):
     key: str
     name: str
